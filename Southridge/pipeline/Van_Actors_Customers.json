@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyActors",
+				"name": "CopyVanActors",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -45,7 +45,7 @@
 				]
 			},
 			{
-				"name": "CopyCustomers",
+				"name": "CopyVanCustomers",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -130,7 +130,7 @@
 				]
 			},
 			{
-				"name": "CopyMovieActors",
+				"name": "CopyVanMovieActors",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
