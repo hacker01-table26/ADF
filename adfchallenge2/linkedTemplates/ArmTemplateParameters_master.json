@@ -20,8 +20,17 @@
 		"VanArsdelSqlVM_connectionString": {
 			"value": ""
 		},
+		"FourthCoffeeFilesLS_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://challenge1.dfs.core.windows.net"
+		},
+		"FourthCoffeeFilesLS_properties_typeProperties_host": {
+			"value": "C:\\Rentals"
+		},
+		"FourthCoffeeFilesLS_properties_typeProperties_userId": {
+			"value": "openhackadmin"
 		},
 		"containerUri": {
 			"value": ""

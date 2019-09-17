@@ -27,9 +27,21 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'VanArsdelSqlVM'"
 		},
+		"FourthCoffeeFilesLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'FourthCoffeeFilesLS'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://challenge1.dfs.core.windows.net"
+		},
+		"FourthCoffeeFilesLS_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Rentals"
+		},
+		"FourthCoffeeFilesLS_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "openhackadmin"
 		},
 		"containerUri": {
 			"type": "string",
@@ -70,9 +82,6 @@
 					"CosmosDb1_connectionString": {
 						"value": "[parameters('CosmosDb1_connectionString')]"
 					},
-					"VanArsdelSqlVM_connectionString": {
-						"value": "[parameters('VanArsdelSqlVM_connectionString')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					}
@@ -93,6 +102,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"VanArsdelSqlVM_connectionString": {
+						"value": "[parameters('VanArsdelSqlVM_connectionString')]"
+					},
+					"FourthCoffeeFilesLS_password": {
+						"value": "[parameters('FourthCoffeeFilesLS_password')]"
+					},
+					"FourthCoffeeFilesLS_properties_typeProperties_host": {
+						"value": "[parameters('FourthCoffeeFilesLS_properties_typeProperties_host')]"
+					},
+					"FourthCoffeeFilesLS_properties_typeProperties_userId": {
+						"value": "[parameters('FourthCoffeeFilesLS_properties_typeProperties_userId')]"
 					}
 				}
 			},
