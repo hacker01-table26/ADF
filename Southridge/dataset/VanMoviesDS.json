@@ -1,0 +1,12 @@
+{
+	"name": "VanMoviesDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VanArsdelSqlVM",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
