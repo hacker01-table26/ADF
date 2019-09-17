@@ -1,0 +1,20 @@
+{
+	"name": "DestinationDataset_365",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "movies",
+				"folderPath": "southridge",
+				"fileSystem": "challenge1"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
