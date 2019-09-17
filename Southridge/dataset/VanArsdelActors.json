@@ -1,0 +1,16 @@
+{
+	"name": "VanArsdelActors",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VanArsdelSqlVM",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Actors"
+		}
+	}
+}
