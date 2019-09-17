@@ -1,0 +1,63 @@
+{
+	"name": "VanTransactionsDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VanArsdelSqlVM",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "TransactionID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "CustomerID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "MovieID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "RentalDate",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ReturnDate",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RentalCost",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "LateFee",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "RewindFlag",
+				"type": "bit"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "date"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Transactions"
+		}
+	}
+}
