@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "cloudstreamingustomers.csv",
 				"folderPath": "cloudstreaming/processed",
 				"fileSystem": "challenge1"
 			},
