@@ -24,4 +24,4 @@ while ($True) {
     Start-Sleep -Seconds 30
 }
 
-exit $exitCode
+Write-Error "Pipline failed with ExitCode $exitCode"
