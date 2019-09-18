@@ -20,3 +20,10 @@ steps:
     ls
     cat ./Southridge/dataset/VanCustomers.json
   displayName: 'Run a multi-line script'
+
+- task: AzurePowerShell@4
+  inputs:
+    azureSubscription: 'OTA-PRD-1436(a7df674c-6d40-4127-bb05-84b9c7600c7b)'
+    ScriptType: 'FilePath'
+    ScriptPath: './run-pipeline-test.ps1'
+    azurePowerShellVersion: 'LatestVersion'
