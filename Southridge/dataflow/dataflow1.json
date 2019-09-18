@@ -6,15 +6,15 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "c4_cloudStreaming_cust",
+						"referenceName": "c4_cloudstreaming_customer",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "cloudstreamingcustomer"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
-			"script": "\n\nsource(allowSchemaDrift: false,\n\tvalidateSchema: false) ~> source1"
+			"script": "\n\nsource(output(\n\t\tCustomerId as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUploadedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> cloudstreamingcustomer"
 		}
 	}
 }
