@@ -20,11 +20,15 @@
 		},
 		"schema": [
 			{
-				"name": "AddressID",
+				"name": "CustomerID",
 				"type": "String"
 			},
 			{
-				"name": "CustomerID",
+				"name": "LastName",
+				"type": "String"
+			},
+			{
+				"name": "FirstName",
 				"type": "String"
 			},
 			{
@@ -48,12 +52,18 @@
 				"type": "String"
 			},
 			{
-				"name": "CreatedDate",
+				"name": "PhoneNumber",
 				"type": "String"
 			},
 			{
+				"name": "CreatedDate",
+				"type": "date",
+				"format": "yyyy-MM-dd"
+			},
+			{
 				"name": "UpdatedDate",
-				"type": "String"
+				"type": "date",
+				"format": "yyyy-MM-dd"
 			}
 		]
 	}
