@@ -17,10 +17,13 @@
 		"CosmosDb1_connectionString": {
 			"value": ""
 		},
-		"VanArsdelSqlVM_connectionString": {
+		"DW_connectionString": {
 			"value": ""
 		},
 		"FourthCoffeeFilesLS_password": {
+			"value": ""
+		},
+		"VanArsdelSqlVM_connectionString": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
