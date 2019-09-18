@@ -1,0 +1,25 @@
+{
+	"name": "Load_stg_tables_tg",
+	"properties": {
+		"description": "Loads staging tables from ADLS to DW",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Load_stg_tables",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 40,
+				"startTime": "2019-09-18T20:08:00.000Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

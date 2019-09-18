@@ -1,0 +1,71 @@
+{
+	"name": "Load_stg_tables",
+	"properties": {
+		"description": "Loads staging tables from data lake to dw",
+		"activities": [
+			{
+				"name": "Execute_load_customers",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Customers",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute_load_orders",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_load_customers",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Orders",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute_DataCleanse_LoadDBO",
+				"description": "Takes data from staging tables and loads dbo tables for final consumption.",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Execute_load_orders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[data_cleanse_and_load]"
+				},
+				"linkedServiceName": {
+					"referenceName": "DW",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"concurrency": 2,
+		"annotations": []
+	}
+}
