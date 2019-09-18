@@ -20,8 +20,12 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
-			"script": "\n\nsource(output(\n\t\tCustomerId as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUploadedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> cloudstreamingcustomer\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUpdatedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> cloudstreamingadd"
+			"transformations": [
+				{
+					"name": "streamingjoin"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tCustomerId as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUploadedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> cloudstreamingcustomer\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUpdatedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> cloudstreamingadd\ncloudstreamingcustomer, cloudstreamingadd join(cloudstreamingcustomer@CustomerId == cloudstreamingadd@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> streamingjoin"
 		}
 	}
 }
