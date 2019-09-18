@@ -55,20 +55,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"destinationADLS_FS": {
-				"type": "string",
-				"defaultValue": "challenge1"
-			},
-			"destionationADLS_Folder": {
-				"type": "string",
-				"defaultValue": "southridge"
-			},
-			"filename": {
-				"type": "string",
-				"defaultValue": "movies.json"
-			}
-		},
 		"annotations": []
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"

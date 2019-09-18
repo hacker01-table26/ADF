@@ -5,6 +5,20 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"southridge_dest_adls_fsname": {
+				"type": "string",
+				"defaultValue": "challenge1"
+			},
+			"southridge_dest_adls_folder": {
+				"type": "string",
+				"defaultValue": "southridge"
+			},
+			"southridge_dest_adls_filename": {
+				"type": "string",
+				"defaultValue": "movies.json"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
