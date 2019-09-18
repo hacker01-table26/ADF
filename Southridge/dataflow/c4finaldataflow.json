@@ -1,0 +1,24 @@
+{
+	"name": "c4finaldataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "c4VanarstCustomerFinal",
+						"type": "DatasetReference"
+					},
+					"name": "varncustomer"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "SourceSystemId"
+				}
+			],
+			"script": "\n\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> varncustomer\nvarncustomer derive(SourceSystemId = 3) ~> SourceSystemId"
+		}
+	}
+}
