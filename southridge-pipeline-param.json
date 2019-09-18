@@ -1,0 +1,5 @@
+{
+    "southridge_dest_adls_fsname": "challenge5",
+    "southridge_dest_adls_folder": "southridgeunittestfolder",
+    "southridge_dest_adls_filename": "moviesunittestout.json"
+}
