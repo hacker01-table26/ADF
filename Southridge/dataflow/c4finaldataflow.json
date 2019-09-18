@@ -18,7 +18,7 @@
 					"name": "SourceSystemId"
 				}
 			],
-			"script": "\n\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> varncustomer\nvarncustomer derive(SourceSystemId = 3) ~> SourceSystemId"
+			"script": "\n\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdateFormats: ['yyyy-MM-dd']) ~> varncustomer\nvarncustomer derive(SourceSystemId = 3) ~> SourceSystemId"
 		}
 	}
 }
