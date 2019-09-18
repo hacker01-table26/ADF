@@ -1,0 +1,119 @@
+{
+	"name": "DestinationDataset_0jj",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "OrderID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "CustomerID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "OrderDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ShipDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TotalCost",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "OrderDetailID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "OrderID2",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "MovieID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Quantity",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "UnitCost",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "LineNumber",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "OrdDtlCreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "OrdDtlUpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "GlobalOrderId",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "SourceSystemID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "orders"
+		}
+	}
+}

@@ -1,0 +1,236 @@
+{
+	"name": "Load Orders",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_0jj",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "challenge1/consolidatedorders/"
+					},
+					{
+						"name": "Destination",
+						"value": "stg.orders"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*.*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrderID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ShipDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ShipDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UpdatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UpdatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDetailID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderDetailID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderID2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderID2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MovieID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MovieID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UnitCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LineNumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "LineNumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OrdDtlCreatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrdDtlCreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "OrdDtlUpdatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrdDtlUpdatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GlobalOrderId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GlobalOrderId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceSystemID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceSystemID",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_0jj",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_0jj",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
