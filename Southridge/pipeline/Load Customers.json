@@ -5,7 +5,14 @@
 			{
 				"name": "Copy_9sv",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Truncate table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -188,6 +195,32 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Truncate table",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[truncate_table]",
+					"storedProcedureParameters": {
+						"tbl": {
+							"value": "stg.Customers",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DW",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
