@@ -3,10 +3,32 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "c4_cloudsales_customers",
+						"type": "DatasetReference"
+					},
+					"name": "cloudsalescustomer"
+				},
+				{
+					"dataset": {
+						"referenceName": "c4_cloudsales_addresses",
+						"type": "DatasetReference"
+					},
+					"name": "cloudsalesaddress"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
-			"script": "\n"
+			"transformations": [
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "cloudsalescustomerdata"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> cloudsalescustomer\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> cloudsalesaddress\ncloudsalescustomer, cloudsalesaddress join(cloudsalescustomer@CustomerID == cloudsalesaddress@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> Join1\nJoin1 select(mapColumn(\n\t\tCustomerID = cloudsalescustomer@CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDate = cloudsalescustomer@CreatedDate,\n\t\tUpdatedDate = cloudsalescustomer@UpdatedDate,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate = cloudsalesaddress@CreatedDate,\n\t\tUpdatedDate = cloudsalesaddress@UpdatedDate\n\t)) ~> cloudsalescustomerdata"
 		}
 	}
 }
