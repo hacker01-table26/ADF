@@ -1,0 +1,48 @@
+{
+	"name": "cloudstreamingdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "c4_cloudstreaming_customer",
+						"type": "DatasetReference"
+					},
+					"name": "cloudstreamingcustomer"
+				},
+				{
+					"dataset": {
+						"referenceName": "c4_cloudstreaming_address",
+						"type": "DatasetReference"
+					},
+					"name": "cloudstreamingadd"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "c4_customerstreamingdata",
+						"type": "DatasetReference"
+					},
+					"name": "customerstreamingsink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "streamingjoin"
+				},
+				{
+					"name": "Select1"
+				},
+				{
+					"name": "dateDerivedColumn"
+				},
+				{
+					"name": "finaldata"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tCustomerId as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date,\n\t\tUploadedDate as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> cloudstreamingcustomer\nsource(output(\n\t\tAddressID as string,\n\t\tCustomerID as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> cloudstreamingadd\ncloudstreamingcustomer, cloudstreamingadd join(cloudstreamingcustomer@CustomerId == cloudstreamingadd@CustomerID,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> streamingjoin\nstreamingjoin select(mapColumn(\n\t\tCustomerId = cloudstreamingcustomer@CustomerId,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tCreatedDateCustomer = cloudstreamingcustomer@CreatedDate,\n\t\tUploadedDateCustomer = UploadedDate,\n\t\tAddressID,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDateAddress = cloudstreamingadd@CreatedDate,\n\t\tUpdatedDateAddress = UpdatedDate\n\t)) ~> Select1\nSelect1 derive(CreatedDate = iif(greater(CreatedDateCustomer,CreatedDateAddress),CreatedDateCustomer,CreatedDateAddress),\n\t\tUpdatedDate = iif(greater(UploadedDateCustomer, UpdatedDateAddress), UploadedDateCustomer,UpdatedDateAddress)) ~> dateDerivedColumn\ndateDerivedColumn select(mapColumn(\n\t\tCustomerId,\n\t\tLastName,\n\t\tFirstName,\n\t\tPhoneNumber,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tCreatedDate,\n\t\tUpdatedDate\n\t)) ~> finaldata\nfinaldata sink(input(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tpartitionFileNames:['customerstreaming.csv'],\n\tpartitionBy('hash', 1)) ~> customerstreamingsink"
+		}
+	}
+}
