@@ -18,4 +18,5 @@ steps:
     echo See https://aka.ms/yaml
     pwd
     ls
+    cat ./SouthRidge/dataset/VanCustomers.json
   displayName: 'Run a multi-line script'
