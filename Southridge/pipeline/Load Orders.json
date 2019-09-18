@@ -47,11 +47,11 @@
 							{
 								"source": {
 									"name": "OrderID",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "OrderID",
-									"type": "String"
+									"type": "Int32"
 								}
 							},
 							{
@@ -67,7 +67,7 @@
 							{
 								"source": {
 									"name": "OrderDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "OrderDate",
@@ -77,7 +77,7 @@
 							{
 								"source": {
 									"name": "ShipDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "ShipDate",
@@ -86,18 +86,18 @@
 							},
 							{
 								"source": {
-									"name": "TotalCost",
-									"type": "String"
-								},
-								"sink": {
 									"name": "TotalCost",
 									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalCost",
+									"type": "Single"
 								}
 							},
 							{
 								"source": {
 									"name": "CreatedDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "CreatedDate",
@@ -107,7 +107,7 @@
 							{
 								"source": {
 									"name": "UpdatedDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "UpdatedDate",
@@ -117,37 +117,37 @@
 							{
 								"source": {
 									"name": "OrderDetailID",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "OrderDetailID",
-									"type": "String"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "OrderID2",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "OrderID2",
-									"type": "String"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "MovieID",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "MovieID",
-									"type": "String"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "Quantity",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "Quantity",
@@ -157,17 +157,17 @@
 							{
 								"source": {
 									"name": "UnitCost",
-									"type": "String"
+									"type": "Decimal"
 								},
 								"sink": {
 									"name": "UnitCost",
-									"type": "Int32"
+									"type": "Single"
 								}
 							},
 							{
 								"source": {
 									"name": "LineNumber",
-									"type": "String"
+									"type": "Int16"
 								},
 								"sink": {
 									"name": "LineNumber",
@@ -177,7 +177,7 @@
 							{
 								"source": {
 									"name": "OrdDtlCreatedDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "OrdDtlCreatedDate",
@@ -187,7 +187,7 @@
 							{
 								"source": {
 									"name": "OrdDtlUpdatedDate",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "OrdDtlUpdatedDate",
@@ -197,11 +197,11 @@
 							{
 								"source": {
 									"name": "GlobalOrderId",
-									"type": "String"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "GlobalOrderId",
-									"type": "String"
+									"type": "Int32"
 								}
 							},
 							{
