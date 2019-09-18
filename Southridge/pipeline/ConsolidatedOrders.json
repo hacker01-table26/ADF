@@ -1,6 +1,7 @@
 {
-	"name": "pipeline1",
+	"name": "ConsolidatedOrders",
 	"properties": {
+		"description": "Join 2 tables for orders",
 		"activities": [
 			{
 				"name": "OrdersJoin",
