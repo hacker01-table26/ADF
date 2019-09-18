@@ -22,13 +22,13 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "C4OrderJoin"
+					"name": "Select1"
 				},
 				{
-					"name": "Select1"
+					"name": "JoinOrders"
 				}
 			],
-			"script": "\n\nsource(output(\n\t\tOrderID as string,\n\t\tCustomerID as string,\n\t\tOrderDate as string,\n\t\tShipDate as string,\n\t\tTotalCost as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> C4OrdersSource\nsource(output(\n\t\tOrderDetailID as string,\n\t\tOrderID as string,\n\t\tMovieID as string,\n\t\tQuantity as string,\n\t\tUnitCost as string,\n\t\tLineNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> C4OrderDetails\nC4OrdersSource, Select1 join(ChangeColumns@OrderID == C4OrderDetails@OrderID,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> C4OrderJoin\nC4OrderDetails select(mapColumn(\n\t\tOrderDetailID,\n\t\tOrderID,\n\t\tMovieID,\n\t\tQuantity,\n\t\tUnitCost,\n\t\tLineNumber,\n\t\tOrdDtlCreatedDate = CreatedDate,\n\t\tOrdDtlUpdatedDate = UpdatedDate\n\t)) ~> Select1"
+			"script": "\n\nsource(output(\n\t\tOrderID as string,\n\t\tCustomerID as string,\n\t\tOrderDate as string,\n\t\tShipDate as string,\n\t\tTotalCost as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> C4OrdersSource\nsource(output(\n\t\tOrderDetailID as string,\n\t\tOrderID as string,\n\t\tMovieID as string,\n\t\tQuantity as string,\n\t\tUnitCost as string,\n\t\tLineNumber as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> C4OrderDetails\nC4OrderDetails select(mapColumn(\n\t\tOrderDetailID,\n\t\tOrderID,\n\t\tMovieID,\n\t\tQuantity,\n\t\tUnitCost,\n\t\tLineNumber,\n\t\tOrdDtlCreatedDate = CreatedDate,\n\t\tOrdDtlUpdatedDate = UpdatedDate\n\t)) ~> Select1\nC4OrdersSource, Select1 join(C4OrdersSource@OrderID == Select1@OrderID,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> JoinOrders"
 		}
 	}
 }
