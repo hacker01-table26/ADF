@@ -1,0 +1,28 @@
+{
+	"name": "fourthcoffeedataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "c4_customer_fourthcoffee",
+						"type": "DatasetReference"
+					},
+					"name": "fourthcoffeecustomer"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "c4FourthCoffeeCustomer",
+						"type": "DatasetReference"
+					},
+					"name": "customerfourthcoffee"
+				}
+			],
+			"transformations": [],
+			"script": "\n\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUpdatedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> fourthcoffeecustomer\nfourthcoffeecustomer sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['c4CustomerFourthCoffeeFinal.csv'],\n\tpartitionBy('hash', 1)) ~> customerfourthcoffee"
+		}
+	}
+}
