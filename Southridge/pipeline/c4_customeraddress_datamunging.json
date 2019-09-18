@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "c4_customeraddress_datamunging",
 	"properties": {
 		"activities": [
 			{
