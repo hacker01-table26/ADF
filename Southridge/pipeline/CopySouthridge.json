@@ -52,9 +52,18 @@
 						"referenceName": "DestinationDataset_365",
 						"type": "DatasetReference",
 						"parameters": {
-							"southridge_dest_adls_fsname": "challenge1",
-							"southridge_dest_adls_folder": "southridge",
-							"southridge_dest_adls_filename": "movies.json"
+							"southridge_dest_adls_fsname": {
+								"value": "@pipeline().parameters.southridge_dest_adls_fsname",
+								"type": "Expression"
+							},
+							"southridge_dest_adls_folder": {
+								"value": "@pipeline().parameters.southridge_dest_adls_folder",
+								"type": "Expression"
+							},
+							"southridge_dest_adls_filename": {
+								"value": "@pipeline().parameters.southridge_dest_adls_filename",
+								"type": "Expression"
+							}
 						}
 					}
 				]
