@@ -24,9 +24,18 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "movies",
-				"folderPath": "southridge",
-				"fileSystem": "challenge1"
+				"fileName": {
+					"value": "@dataset().southridge_dest_adls_filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().southridge_dest_adls_folder",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().southridge_dest_adls_fsname",
+					"type": "Expression"
+				}
 			}
 		}
 	},
