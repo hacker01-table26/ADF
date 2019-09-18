@@ -26,9 +26,15 @@
 				},
 				{
 					"name": "vanfinalcustomer"
+				},
+				{
+					"name": "fourthcoffeedervied"
+				},
+				{
+					"name": "fourthcoffeeselect"
 				}
 			],
-			"script": "\n\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as integer,\n\t\tPhoneNumber as long,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdateFormats: ['yyyy-MM-dd']) ~> varncustomer\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date 'yyyy-MM-dd',\n\t\tUpdatedDate as date 'yyyy-MM-dd'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> fourthcoffedd\nvarncustomer derive(SourceSystemId = 3,\n\t\tGlobalCustomerID = concat('3',CustomerID)) ~> SourceSystemId\nSourceSystemId select(mapColumn(\n\t\tSourceSystemCustomerID = CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tSourceSystemId,\n\t\tGlobalCustomerID\n\t)) ~> vanfinalcustomer"
+			"script": "\n\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as integer,\n\t\tPhoneNumber as long,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdateFormats: ['yyyy-MM-dd']) ~> varncustomer\nsource(output(\n\t\tCustomerID as string,\n\t\tLastName as string,\n\t\tFirstName as string,\n\t\tAddressLine1 as string,\n\t\tAddressLine2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZipCode as string,\n\t\tPhoneNumber as string,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> fourthcoffedd\nvarncustomer derive(SourceSystemId = 3,\n\t\tGlobalCustomerID = concat('3',CustomerID)) ~> SourceSystemId\nSourceSystemId select(mapColumn(\n\t\tSourceSystemCustomerID = CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tSourceSystemId,\n\t\tGlobalCustomerID\n\t)) ~> vanfinalcustomer\nfourthcoffedd derive(SourceSystemId = 2,\n\t\tGlobalCustomerID = concat('2', CustomerID)) ~> fourthcoffeedervied\nfourthcoffeedervied select(mapColumn(\n\t\tSourceSystemCustomerID = CustomerID,\n\t\tLastName,\n\t\tFirstName,\n\t\tAddressLine1,\n\t\tAddressLine2,\n\t\tCity,\n\t\tState,\n\t\tZipCode,\n\t\tPhoneNumber,\n\t\tCreatedDate,\n\t\tUpdatedDate,\n\t\tSourceSystemId,\n\t\tGlobalCustomerID\n\t)) ~> fourthcoffeeselect"
 		}
 	}
 }
