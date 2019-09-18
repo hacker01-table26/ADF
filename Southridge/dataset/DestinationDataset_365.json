@@ -5,14 +5,37 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"southridge_dest_adls_fsname": {
+				"type": "string",
+				"defaultValue": "challenge1"
+			},
+			"southridge_dest_adls_folder": {
+				"type": "string",
+				"defaultValue": "southridge"
+			},
+			"southridge_dest_adls_filename": {
+				"type": "string",
+				"defaultValue": "movies.json"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "movies",
-				"folderPath": "southridge",
-				"fileSystem": "challenge1"
+				"fileName": {
+					"value": "@dataset().southridge_dest_adls_filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().southridge_dest_adls_folder",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().southridge_dest_adls_fsname",
+					"type": "Expression"
+				}
 			}
 		}
 	},
