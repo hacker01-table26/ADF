@@ -1,0 +1,95 @@
+{
+	"name": "DestinationDataset_9sv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "SourceSystemCustomerID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "LastName",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "AddressLine1",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "AddressLine2",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "City",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "State",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "ZipCode",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "PhoneNumber",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SourceSystemId",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "GlobalCustomerID",
+				"type": "varchar",
+				"precision": 255,
+				"scale": 255
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Customers"
+		}
+	}
+}
