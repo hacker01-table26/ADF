@@ -47,11 +47,11 @@
 							{
 								"source": {
 									"name": "OrderID",
-									"type": "Int16"
+									"type": "String"
 								},
 								"sink": {
 									"name": "OrderID",
-									"type": "Int32"
+									"type": "String"
 								}
 							},
 							{
@@ -91,7 +91,7 @@
 								},
 								"sink": {
 									"name": "TotalCost",
-									"type": "Single"
+									"type": "Decimal"
 								}
 							},
 							{
@@ -117,37 +117,37 @@
 							{
 								"source": {
 									"name": "OrderDetailID",
-									"type": "Int16"
+									"type": "String"
 								},
 								"sink": {
 									"name": "OrderDetailID",
-									"type": "Int32"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "OrderID2",
-									"type": "Int16"
+									"type": "String"
 								},
 								"sink": {
 									"name": "OrderID2",
-									"type": "Int32"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "MovieID",
-									"type": "Int16"
+									"type": "String"
 								},
 								"sink": {
 									"name": "MovieID",
-									"type": "Int32"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "Quantity",
-									"type": "Int16"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "Quantity",
@@ -161,13 +161,13 @@
 								},
 								"sink": {
 									"name": "UnitCost",
-									"type": "Single"
+									"type": "Decimal"
 								}
 							},
 							{
 								"source": {
 									"name": "LineNumber",
-									"type": "Int16"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "LineNumber",
@@ -197,11 +197,11 @@
 							{
 								"source": {
 									"name": "GlobalOrderId",
-									"type": "Int32"
+									"type": "String"
 								},
 								"sink": {
 									"name": "GlobalOrderId",
-									"type": "Int32"
+									"type": "String"
 								}
 							},
 							{
